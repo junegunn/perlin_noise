@@ -145,7 +145,7 @@ class PerlinTest < Test::Unit::TestCase
 
     (0..100).each do |x|
       n = 0
-      [[0.02, 10], [0.04, 10], [0.1, 20], [0.2, 15]].each_with_index do |step_scale, idx|
+      [[0.02, 10], [0.04, 10], [0.1, 30], [0.2, 15]].each_with_index do |step_scale, idx|
         step, scale = step_scale
         n += contrast.call( noises[idx, x * step] ) * scale
       end
