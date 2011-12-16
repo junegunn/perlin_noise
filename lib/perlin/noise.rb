@@ -43,7 +43,7 @@ module Perlin
       end
 
       dim = @dim
-      diff.each do |u|
+      diff.to_a.each do |u|
         bu = @curve.call u
 
         # Pair-wise interpolation, trimming down dimensions

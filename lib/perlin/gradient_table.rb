@@ -34,7 +34,8 @@ module Perlin
         # Discards vectors whose length greater than 1 to avoid bias in distribution
         break if v.r > 0 && v.r <= 1
       end
-      v / v.r
+      r = v.r
+      v.map { |e| e / v.r }
     end
   end
 end
