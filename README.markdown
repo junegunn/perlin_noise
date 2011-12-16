@@ -4,11 +4,11 @@ Ruby-implementation of N-dimension Perlin noise.
 ## Installation
 
 ```
-gem install perlin
+gem install perlin_noise
 ```
 
 ```ruby
-require 'perlin'
+require 'perlin_noise'
 ```
 
 ## Basic
