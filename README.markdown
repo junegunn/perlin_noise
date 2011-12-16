@@ -41,6 +41,7 @@ n5d[rand, rand, rand, rand, rand]
 A gradient noise repeats itself at certain interval. (Default interval is 256)
 You can change the interval of the noise generator but keep in mind that
 longer interval requires more pseudo-random gradient vectors to be maintained in memory.
+
 ```ruby
 n3d = Perlin::Noise.new 3, :interval => 100
 n3d[0.1, 0.2, 0.3]
@@ -75,7 +76,7 @@ contrast = Perlin::Curve.contrast(Perlin::Curve::CUBIC, 3)
 n = contrast.call n
 ```
 
-## "Noise gallery"
+## Noise gallery
 
 ### 1D noise
 
