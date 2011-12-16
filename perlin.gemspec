@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Perlin::VERSION
   s.authors     = ["Junegunn Choi"]
   s.email       = ["junegunn.c@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "https://github.com/junegunn/perlin"
+  s.summary     = %q{Perlin noise generator}
+  s.description = %q{Perlin noise implemented in Ruby}
 
   s.rubyforge_project = "perlin"
 
