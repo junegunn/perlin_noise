@@ -58,7 +58,8 @@ Even though the range of the noise function is from 0 to 1,
 you'll rarely see a noise value close to either end, 
 as most of the values are distributed around the center.
 You might want to apply S-shaped curve functions defined in Perlin::Curve module 
-one or more times to push away those numbers to either end.
+one or more times to push away those "grey" values to either end, 
+achiving more contrasted output.
 
 ```ruby
 noise = Perlin::Noise.new 1
@@ -70,7 +71,8 @@ n = noise[0.1]
 end
 ```
 
-There's a shortcut for this process.
+There's a shortcut for this specific process.
+
 ```ruby
 contrast = Perlin::Curve.contrast(Perlin::Curve::CUBIC, 3)
 n = contrast.call n
