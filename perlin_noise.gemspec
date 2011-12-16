@@ -3,11 +3,11 @@ $:.push File.expand_path("../lib", __FILE__)
 require "perlin/version"
 
 Gem::Specification.new do |s|
-  s.name        = "perlin"
+  s.name        = "perlin_noise"
   s.version     = Perlin::VERSION
   s.authors     = ["Junegunn Choi"]
   s.email       = ["junegunn.c@gmail.com"]
-  s.homepage    = "https://github.com/junegunn/perlin"
+  s.homepage    = "https://github.com/junegunn/perlin_noise"
   s.summary     = %q{Perlin noise generator}
   s.description = %q{Perlin noise implemented in Ruby}
 
