@@ -128,7 +128,7 @@ class PerlinTest < Test::Unit::TestCase
       bars[ (bars.length * n).floor ]
     }
 
-    0.upto(100) do |i|
+    100.times do |i|
       70.times do |y|
         n = noises[i * 0.1, y * 0.1]
         n = contrast.call n
@@ -143,7 +143,7 @@ class PerlinTest < Test::Unit::TestCase
     noises = Perlin::Noise.new(2)
     contrast = Perlin::Curve.contrast(Perlin::Curve::QUINTIC, 3)
 
-    (0..100).each do |x|
+    100.times do |x|
       n = 0
       [[0.02, 10], [0.04, 10], [0.1, 30], [0.2, 15]].each_with_index do |step_scale, idx|
         step, scale = step_scale
