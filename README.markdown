@@ -85,9 +85,7 @@ n = contrast.call n
 ```ruby
 noise = Perlin::Noise.new 1, :interval => 200
 0.step(300, 0.1).each do |x|
-  n = noise[x]
-  len = (n * 60).to_i
-  puts '#' * len
+  puts '#' * (noise[x] * 60).floor
 end
 ```
 
