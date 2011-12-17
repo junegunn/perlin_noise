@@ -2,8 +2,7 @@ module Perlin
   class Noise
     DEFAULT_OPTIONS = {
       :interval => 256,
-      :curve => Perlin::Curve::QUINTIC,
-      :contrast => proc { }
+      :curve => Perlin::Curve::QUINTIC
     }
 
     def initialize dim, options = {}
@@ -30,7 +29,7 @@ module Perlin
       cell = Vector[*coords.map(&:to_i)]
       diff = coords - cell
 
-  		# Calculate noise factor at each surrouning vertex
+      # Calculate noise factor at each surrouning vertex
       nf = {}
       iterate @dim, 2 do |idx|
         idx = Vector[*idx]
@@ -39,7 +38,7 @@ module Perlin
         # product (dot product) between the gradient vectors of each grid point
         # and the vectors from the grid points."
         gv = @gradient_table[ * (cell + idx).to_a ]
-			  nf[idx.to_a] = gv.inner_product(diff - idx) 
+        nf[idx.to_a] = gv.inner_product(diff - idx) 
       end
 
       dim = @dim
