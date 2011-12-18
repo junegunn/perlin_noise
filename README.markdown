@@ -1,4 +1,4 @@
-# perlin
+# perlin_noise
 Ruby-implementation of N-dimension Perlin noise.
 
 ## Installation
