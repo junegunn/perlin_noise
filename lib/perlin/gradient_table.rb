@@ -1,12 +1,26 @@
 module Perlin
+  if RUBY_VERSION =~ /^1\.8\./
+    class Random
+      def initialize *seed
+        # FIXME: Sets the global seed value; this is misleading
+        srand *seed
+      end
+
+      def rand *interval
+        Kernel.rand *interval
+      end
+    end
+  else
+    Random = ::Random
+  end
+
   class GradientTable
     # Bit-wise AND operation is not any faster than MOD in Ruby
     # MOD operation returns positive number for negative input
-    def initialize dim, interval = 256, seed = 12345
+    def initialize dim, interval = 256, seed = nil
       @dim = dim
       @interval = interval
-      @seed = seed
-      @random = Random.new(seed)
+      @random = Random.new(*[seed].compact)
 
       @table   = Array.new(interval) { @random.rand @interval }
       @vectors = Array.new(interval) { random_unit_vector }

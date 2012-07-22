@@ -79,6 +79,12 @@ class PerlinTest < Test::Unit::TestCase
     assert_raise(ArgumentError) { Perlin::Noise.new 1, :interval => 0.5 }
     assert_raise(ArgumentError) { Perlin::Noise.new 1, :interval => -1 }
 
+    # Seed
+    Perlin::Noise.new 1, :seed => 1
+    Perlin::Noise.new 1, :seed => 0.1
+    Perlin::Noise.new 1, :seed => -0.1
+    assert_raise(ArgumentError) { Perlin::Noise.new 1, :seed => "seed" }
+
     # Curve
     Perlin::Noise.new 2, :curve => Perlin::Curve::CUBIC
     assert_raise(ArgumentError) { Perlin::Noise.new 2, :curve => nil }
@@ -139,8 +145,19 @@ class PerlinTest < Test::Unit::TestCase
     end
   end
 
+  def test_seed
+    noise1 = Perlin::Noise.new(1, :seed => 12345)
+    noise2 = Perlin::Noise.new(1, :seed => 12345)
+    assert_equal 0.step(1, 0.01).map { |v| noise1[v] },
+        0.step(1, 0.01).map { |v| noise2[v] }
+
+    noise3 = Perlin::Noise.new(1, :seed => 54321)
+    assert_not_equal 0.step(1, 0.01).map { |v| noise1[v] },
+        0.step(1, 0.01).map { |v| noise3[v] }
+  end
+
   def test_synthesis
-    noises = Perlin::Noise.new(2)
+    noises = Perlin::Noise.new(2, :seed => 0.12345)
     contrast = Perlin::Curve.contrast(Perlin::Curve::QUINTIC, 3)
 
     100.times do |x|

@@ -37,7 +37,7 @@ n5d[rand, rand, rand, rand, rand]
 ```
 
 ## Options
-### :interval
+### `:interval`
 A gradient noise repeats itself at certain interval. (Default interval is 256)
 You can change the interval of the noise generator but keep in mind that
 longer interval requires more pseudo-random gradient vectors to be maintained in memory.
@@ -46,6 +46,15 @@ longer interval requires more pseudo-random gradient vectors to be maintained in
 n3d = Perlin::Noise.new 3, :interval => 100
 n3d[0.1, 0.2, 0.3]
 n3d[0.1, 0.2, 100.3]
+```
+
+### `:seed`
+
+You can optionally specify a seed value for the random number generator.
+(Caveat: seed value is set globally in Ruby 1.8)
+
+```ruby
+noises = Perlin::Noise.new 1, :seed => 12345
 ```
 
 ## Range of noise function
@@ -473,6 +482,10 @@ end
 ================================
 ```
 
+
+## Contributors
+
+- [Matthew Johnston](https://github.com/warmwaffles)
 
 ## References
 - Texturing & modeling: a procedural approach by David S. Ebert et al.

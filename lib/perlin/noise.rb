@@ -3,7 +3,7 @@ module Perlin
     DEFAULT_OPTIONS = {
       :interval => 256,
       :curve => Perlin::Curve::QUINTIC,
-      :seed => 12345
+      :seed => nil
     }
 
     def initialize dim, options = {}
@@ -17,7 +17,7 @@ module Perlin
       raise ArgumentError.new("Invalid dimension: must be a positive integer")  unless @dim.is_a?(Fixnum) && @dim > 0
       raise ArgumentError.new("Invalid interval: must be a positive integer")   unless @interval.is_a?(Fixnum) && @interval > 0
       raise ArgumentError.new("Invalid curve specified: must be a Proc object") unless @curve.is_a?(Proc)
-      raise ArgumentError.new("Invalid seed: must be an integer")               unless @seed.is_a?(Fixnum)
+      raise ArgumentError.new("Invalid seed: must be a number")                 unless @seed.nil? || @seed.is_a?(Numeric)
 
       # Generate pseudo-random gradient vector for each grid point
       @gradient_table = Perlin::GradientTable.new @dim, @interval, @seed
