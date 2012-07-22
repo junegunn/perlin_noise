@@ -2,11 +2,13 @@ module Perlin
   class GradientTable
     # Bit-wise AND operation is not any faster than MOD in Ruby
     # MOD operation returns positive number for negative input
-    def initialize dim, interval = 256
+    def initialize dim, interval = 256, seed = 12345
       @dim = dim
       @interval = interval
+      @seed = seed
+      @random = Random.new(seed)
 
-      @table   = Array.new(interval) { rand @interval }
+      @table   = Array.new(interval) { @random.rand @interval }
       @vectors = Array.new(interval) { random_unit_vector }
     end
 
@@ -30,7 +32,7 @@ module Perlin
 
     def random_unit_vector
       while true
-        v = Vector[*Array.new(@dim) { rand * 2 - 1 }]
+        v = Vector[*Array.new(@dim) { @random.rand * 2 - 1 }]
         # Discards vectors whose length greater than 1 to avoid bias in distribution
         break if v.r > 0 && v.r <= 1
       end

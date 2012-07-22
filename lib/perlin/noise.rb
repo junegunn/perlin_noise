@@ -2,7 +2,8 @@ module Perlin
   class Noise
     DEFAULT_OPTIONS = {
       :interval => 256,
-      :curve => Perlin::Curve::QUINTIC
+      :curve => Perlin::Curve::QUINTIC,
+      :seed => 12345
     }
 
     def initialize dim, options = {}
@@ -11,13 +12,15 @@ module Perlin
       @dim = dim
       @interval = options.fetch(:interval)
       @curve = options.fetch(:curve)
+      @seed = options.fetch(:seed)
 
       raise ArgumentError.new("Invalid dimension: must be a positive integer")  unless @dim.is_a?(Fixnum) && @dim > 0
       raise ArgumentError.new("Invalid interval: must be a positive integer")   unless @interval.is_a?(Fixnum) && @interval > 0
       raise ArgumentError.new("Invalid curve specified: must be a Proc object") unless @curve.is_a?(Proc)
+      raise ArgumentError.new("Invalid seed: must be an integer")               unless @seed.is_a?(Fixnum)
 
       # Generate pseudo-random gradient vector for each grid point
-      @gradient_table = Perlin::GradientTable.new @dim, @interval
+      @gradient_table = Perlin::GradientTable.new @dim, @interval, @seed
     end
 
     # @param [*coords] Coordinates
@@ -38,7 +41,7 @@ module Perlin
         # product (dot product) between the gradient vectors of each grid point
         # and the vectors from the grid points."
         gv = @gradient_table[ * (cell + idx).to_a ]
-        nf[idx.to_a] = gv.inner_product(diff - idx) 
+        nf[idx.to_a] = gv.inner_product(diff - idx)
       end
 
       dim = @dim
