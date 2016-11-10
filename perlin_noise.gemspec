@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Junegunn Choi"]
   s.email       = ["junegunn.c@gmail.com"]
   s.homepage    = "https://github.com/junegunn/perlin_noise"
+  s.license     = 'MIT'
   s.summary     = %q{Perlin noise generator}
   s.description = %q{Perlin noise implemented in Ruby}
 

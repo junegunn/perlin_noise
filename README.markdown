@@ -487,6 +487,10 @@ end
 
 - [Matthew Johnston](https://github.com/warmwaffles)
 
+## License
+
+[MIT](LICENSE)
+
 ## References
 - Texturing & modeling: a procedural approach by David S. Ebert et al.
 - Improving Noise by Ken Perlin (http://mrl.nyu.edu/~perlin/paper445.pdf)
