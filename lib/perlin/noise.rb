@@ -14,8 +14,8 @@ module Perlin
       @curve = options.fetch(:curve)
       @seed = options.fetch(:seed)
 
-      raise ArgumentError.new("Invalid dimension: must be a positive integer")  unless @dim.is_a?(Fixnum) && @dim > 0
-      raise ArgumentError.new("Invalid interval: must be a positive integer")   unless @interval.is_a?(Fixnum) && @interval > 0
+      raise ArgumentError.new("Invalid dimension: must be a positive integer")  unless @dim.is_a?(Integer) && @dim > 0
+      raise ArgumentError.new("Invalid interval: must be a positive integer")   unless @interval.is_a?(Integer) && @interval > 0
       raise ArgumentError.new("Invalid curve specified: must be a Proc object") unless @curve.is_a?(Proc)
       raise ArgumentError.new("Invalid seed: must be a number")                 unless @seed.nil? || @seed.is_a?(Numeric)
 
@@ -80,4 +80,3 @@ module Perlin
     end
   end#Noise
 end#Perlin
-

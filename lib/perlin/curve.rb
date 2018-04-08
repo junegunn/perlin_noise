@@ -7,7 +7,7 @@ module Perlin
     # Returns a Proc object which applies S-curve function to
     # a given number between 0 and 1.
     # @param[Proc] curve
-    # @param[Fixnum] times
+    # @param[Integer] times
     # @return[Proc]
     def self.contrast curve, times
       lambda { |n|
