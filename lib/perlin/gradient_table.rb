@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Perlin
   if RUBY_VERSION =~ /^1\.8\./
     class Random
-      def initialize *seed
+      def initialize(*seed)
         # FIXME: Sets the global seed value; this is misleading
         srand *seed
       end
 
-      def rand *interval
-        Kernel.rand *interval
+      def rand(*interval)
+        Kernel.rand(*interval)
       end
     end
   else
@@ -26,13 +28,14 @@ module Perlin
       @vectors = Array.new(interval) { random_unit_vector }
     end
 
-    def [] *coords
-      @vectors[index *coords]
+    def [](*coords)
+      @vectors[index(*coords)]
     end
 
-  private
+    private
+
     # A simple hashing
-    def index *coords
+    def index(*coords)
       s = coords.last
       coords.reverse[1..-1].each do |c|
         s = perm(s) + c
@@ -40,17 +43,17 @@ module Perlin
       perm(s)
     end
 
-    def perm s
+    def perm(s)
       @table[s % @interval]
     end
 
     def random_unit_vector
       while true
         v = Vector[*Array.new(@dim) { @random.rand * 2 - 1 }]
-        # Discards vectors whose length greater than 1 to avoid bias in distribution
+        # Discards vectors whose length greater than 1 to avoid bias in
+        # distribution
         break if v.r > 0 && v.r <= 1
       end
-      r = v.r
       v.map { |e| e / v.r }
     end
   end

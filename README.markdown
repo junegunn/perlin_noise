@@ -58,16 +58,16 @@ noises = Perlin::Noise.new 1, :seed => 12345
 ```
 
 ## Range of noise function
-While the original algorithm outputs a number between -1.0 and 1.0, 
+While the original algorithm outputs a number between -1.0 and 1.0,
 Perlin::Noise#[] manipulates this output and returns a number between 0.0 and 1.0 for ease of use.
 Thus, noise values at all of the integer lattice points should be 0.5, not 0.
 
 ## Increasing the contrast
-Even though the range of the noise function is from 0 to 1, 
-you'll rarely see a noise value close to either end, 
+Even though the range of the noise function is from 0 to 1,
+you'll rarely see a noise value close to either end,
 as most of the values are distributed around the center.
-You might want to apply S-shaped curve functions defined in Perlin::Curve module 
-one or more times to push away those "grey" values to either end, 
+You might want to apply S-shaped curve functions defined in Perlin::Curve module
+one or more times to push away those "grey" values to either end,
 achiving more contrasted output.
 
 ```ruby
@@ -242,7 +242,7 @@ noises = Perlin::Noise.new(2)
 contrast = Perlin::Curve.contrast(Perlin::Curve::CUBIC, 2)
 
 bars = " ▁▂▃▄▅▆▇█".each_char.to_a
-bar = lambda { |n| 
+bar = lambda { |n|
   bars[ (bars.length * n).floor ]
 }
 
@@ -312,8 +312,8 @@ end
 ▃▄▄▅▄▄▃▂▂▃▃▄▄▄▄▃▃▂▃▃▄▅▆▇███▇▇▆▆▆▅▄▃▂▁▂▂▃▄▄▅▆▇▇▇▇▆▆▅▅▄▃▃▃▃▃▄▅▆▆▇▇▇▆▅▄▃▂
 ▂▃▄▄▄▄▃▃▃▃▃▄▄▄▃▃▃▃▃▄▅▆▇▇█████▇▇▇▆▅▄▃▃▂▃▃▄▄▅▆▇▇▇▆▆▅▅▅▄▃▃▃▃▄▅▅▆▇▇▇▇▆▅▃▂▁
 ▂▃▃▄▄▄▄▃▃▃▃▄▄▃▃▃▃▃▄▄▅▆▇████████▇▇▆▆▅▄▄▄▄▄▅▅▅▆▆▆▆▅▅▄▄▄▃▃▃▃▄▅▆▆▇▇▇▇▆▄▂▁▁
-▂▂▃▄▅▅▅▄▄▄▄▄▃▃▃▃▃▃▄▅▆▆▇██████████▇▇▆▆▅▅▅▅▅▅▅▅▅▅▄▄▄▄▃▃▃▃▃▃▄▅▆▆▇▇▇▆▅▃▂▁ 
-▂▂▃▅▅▆▆▆▅▅▄▄▃▃▂▂▃▃▄▅▆▇▇▇██████████▇▇▇▆▆▅▅▅▄▄▄▃▃▃▃▃▃▃▃▂▂▂▃▃▄▅▆▇▇▇▆▅▃▂▁ 
+▂▂▃▄▅▅▅▄▄▄▄▄▃▃▃▃▃▃▄▅▆▆▇██████████▇▇▆▆▅▅▅▅▅▅▅▅▅▅▄▄▄▄▃▃▃▃▃▃▄▅▆▆▇▇▇▆▅▃▂▁
+▂▂▃▅▅▆▆▆▅▅▄▄▃▃▂▂▃▃▄▅▆▇▇▇██████████▇▇▇▆▆▅▅▅▄▄▄▃▃▃▃▃▃▃▃▂▂▂▃▃▄▅▆▇▇▇▆▅▃▂▁
 ▂▃▄▅▆▇▇▆▆▅▅▄▃▂▂▂▂▃▄▅▆▆▇▇▇▇▇▇▇▇▇▇▇██▇▇▇▆▆▅▅▄▃▃▂▂▂▂▂▃▃▂▂▂▂▂▃▃▄▅▆▇▇▆▅▃▂▁▁
 ▃▄▅▆▇▇▇▇▆▅▅▄▃▂▁▁▂▃▄▅▅▆▆▇▇▇▆▆▆▆▆▆▇▇▇▇▇▇▆▆▅▄▃▃▂▂▂▂▂▂▃▃▂▂▂▂▂▂▃▄▅▆▆▆▆▅▄▃▂▂
 ▃▄▅▆▇▇▇▇▆▅▄▃▂▂▁▁▁▂▃▄▅▅▆▆▆▆▅▅▅▅▅▅▆▇▇▇▇▇▆▅▅▄▃▂▂▂▂▂▃▃▃▃▃▃▂▂▂▂▂▃▄▅▆▆▆▅▅▄▃▃
@@ -342,7 +342,7 @@ end
 ▃▃▂▃▃▄▅▆▆▅▅▄▃▃▃▃▃▃▃▃▂▂▁    ▁▂▃▃▄▅▆▆▆▅▄▄▃▃▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▂▃▄▅▅▆▅▄▄▃▂
 ▄▃▂▃▃▄▅▆▆▆▅▄▄▃▃▃▃▃▂▂▁▁     ▁▂▃▃▄▅▅▅▅▅▄▃▃▃▂▂▂▁▁▁▁▁▁▁▁▁▁   ▁▁▂▂▃▄▅▅▄▃▂▂▁
 ▄▃▃▃▄▅▆▆▇▇▆▅▅▄▄▃▃▂▂▁▁▁    ▁▁▂▃▃▄▄▅▅▅▅▄▄▃▃▃▂▁▁▁   ▁▁▁▁▁    ▁▁▂▃▃▄▄▄▃▂▁▁
-▄▄▃▃▄▅▆▇▇▇▆▆▅▅▄▄▃▂▂▁▁    ▁▁▂▃▃▄▄▄▄▄▅▅▅▄▄▄▃▃▂▁▁    ▁▁▁▁▁   ▁▁▂▂▃▄▄▃▃▂▁ 
+▄▄▃▃▄▅▆▇▇▇▆▆▅▅▄▄▃▂▂▁▁    ▁▁▂▃▃▄▄▄▄▄▅▅▅▄▄▄▃▃▂▁▁    ▁▁▁▁▁   ▁▁▂▂▃▄▄▃▃▂▁
 ▅▄▄▄▄▅▆▆▇▇▇▆▆▅▅▄▃▃▂▁▁▁  ▁▂▂▃▄▄▄▃▃▃▄▄▅▅▅▅▄▄▃▂▁▁   ▁▁▁▁▁▁▁▁▁▁▁▂▂▃▄▄▄▃▂▁▁
 ▅▄▄▄▄▄▅▆▇▇▆▆▆▆▅▅▄▃▃▂▁▁▁▁▂▃▄▄▅▅▄▃▃▃▃▄▅▅▆▅▅▄▄▂▁▁  ▁▁▂▂▂▂▂▂▁▁▁▁▂▃▄▄▅▄▄▃▂▁
 ▅▄▄▃▃▄▅▅▆▆▆▆▆▅▅▅▅▄▄▃▂▂▂▂▃▄▅▅▅▅▄▃▃▃▃▄▅▅▆▆▅▅▄▂▂▁▁▁▁▂▂▃▃▃▃▂▂▂▂▂▃▃▄▅▅▅▅▄▃▂
