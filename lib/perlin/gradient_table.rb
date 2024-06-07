@@ -5,7 +5,7 @@ module Perlin
     class Random
       def initialize(*seed)
         # FIXME: Sets the global seed value; this is misleading
-        srand *seed
+        srand(*seed)
       end
 
       def rand(*interval)
@@ -49,12 +49,12 @@ module Perlin
 
     def random_unit_vector
       while true
-        v = Vector[*Array.new(@dim) { @random.rand * 2 - 1 }]
+        v = Perlin::Vector[*Array.new(@dim) { @random.rand * 2 - 1 }]
         # Discards vectors whose length greater than 1 to avoid bias in
         # distribution
         break if v.r > 0 && v.r <= 1
       end
-      v.map { |e| e / v.r }
+      v / v.r
     end
   end
 end

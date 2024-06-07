@@ -68,10 +68,10 @@ class PerlinTest < Test::Unit::TestCase
 
   def test_noise_invalid_params
     # Dimension
-    assert_raise(ArgumentError) { Perlin::Noise.new 0 }
-    assert_raise(ArgumentError) { Perlin::Noise.new 0.1 }
-    assert_raise(ArgumentError) { Perlin::Noise.new -1 }
-    assert_raise(ArgumentError) { Perlin::Noise.new -0.1 }
+    assert_raise(ArgumentError) { Perlin::Noise.new(0) }
+    assert_raise(ArgumentError) { Perlin::Noise.new(0.1) }
+    assert_raise(ArgumentError) { Perlin::Noise.new(-1) }
+    assert_raise(ArgumentError) { Perlin::Noise.new(-0.1) }
 
     # Interval
     Perlin::Noise.new 1

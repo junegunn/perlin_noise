@@ -28,14 +28,14 @@ module Perlin
     def [](*coords)
       raise ArgumentError.new("Invalid coordinates") unless coords.length == @dim
 
-      coords = Vector[*coords]
-      cell = Vector[*coords.map(&:to_i)]
+      coords = Perlin::Vector[*coords]
+      cell = Perlin::Vector[*coords.map(&:to_i)]
       diff = coords - cell
 
       # Calculate noise factor at each surrouning vertex
       nf = {}
       iterate @dim, 2 do |idx|
-        idx = Vector[*idx]
+        idx = Perlin::Vector[*idx]
 
         # "The value of each gradient ramp is computed by means of a scalar
         # product (dot product) between the gradient vectors of each grid point
